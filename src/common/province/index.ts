@@ -1,7 +1,0 @@
-export * from './interface/filter.interface'
-export * from './interface/model.interface'
-export * from './interface/repository.interface'
-export * from './interface/service.interface'
-export * from './province.builder'
-export * from './province.model'
-export * from './province.service'
