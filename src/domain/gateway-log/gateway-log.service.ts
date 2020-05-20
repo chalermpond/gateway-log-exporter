@@ -15,10 +15,10 @@ export class GatewayLogService implements IGatewayLogService {
     public sendToRabbitmq(body: any): Observable<any> {
 
         // console.log('message: ', body.getMessageLog())
-        console.log(body)
+        // console.log(body)
         const messageLog: IMessageLog = {
-            messageLog: body.toString(),
-            queue: 'gateway-log'
+            messageLog: JSON.stringify(body),
+            queue: 'gateway-log-exporter'
         }
         return this._rabbitmqAdapter.sendToRabbitmq(messageLog)
     }
