@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common'
 import { providerNames } from '../../provider/provider.name'
 import { IGatewayLogService } from '../../domain/gateway-log/interface/service.interface'
-import { GatewayLogValidator } from './gateway-log.validator'
 
 @Controller('gateway/log')
 export class GatewayLogController {
@@ -18,7 +17,7 @@ export class GatewayLogController {
 
     @Post('/message')
     public sendLog(
-        @Body() body: GatewayLogValidator
+        @Body() body: any
     ) {
         return this._gatewayLogService.sendToRabbitmq(body)
     }

@@ -1,5 +1,4 @@
 import {
-    Global,
     Module,
 } from '@nestjs/common'
 import {
@@ -8,7 +7,6 @@ import {
 } from '../provider/gateway.provider'
 import { GatewayLogController } from '../controller/gateway-log/gateway-log.controller'
 
-// @Global
 @Module({
     providers: [
         gatewayLogServiceProviders,

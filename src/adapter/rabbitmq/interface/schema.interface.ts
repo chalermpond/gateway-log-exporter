@@ -1,5 +1,5 @@
 
 export interface IMessageLog {
-    messageLog: string
+    messageLog: any
     queue: string
 }

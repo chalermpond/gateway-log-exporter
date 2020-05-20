@@ -4,7 +4,6 @@ import {
     of,
 } from 'rxjs'
 import { IRabbitmqAdapter } from '../../adapter/rabbitmq/interface/adapter.interface'
-import { IGatewayLogValidator } from './interface/validator.interface'
 import { IMessageLog } from '../../adapter/rabbitmq/interface/schema.interface'
 
 export class GatewayLogService implements IGatewayLogService {
@@ -13,13 +12,13 @@ export class GatewayLogService implements IGatewayLogService {
     ) {
     }
 
-    public sendToRabbitmq(body: IGatewayLogValidator): Observable<any> {
+    public sendToRabbitmq(body: any): Observable<any> {
 
         // console.log('message: ', body.getMessageLog())
-        // console.log(body)
+        console.log(body)
         const messageLog: IMessageLog = {
-            messageLog: body.getMessageLog(),
-            queue: body.getQueue()
+            messageLog: body.toString(),
+            queue: 'gateway-log'
         }
         return this._rabbitmqAdapter.sendToRabbitmq(messageLog)
     }
