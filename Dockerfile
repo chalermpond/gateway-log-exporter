@@ -9,31 +9,28 @@ RUN apt-get update -y && \
 #RUN mkdir /app && cd /app
 #    git clone https://ucconnect:8GUHEGP4-ux-p9XxPwNM@gitlab.com/ucconnect.devs/i-bank/api-gateway/gateway-log-exporter.git && \
 WORKDIR /app
-#COPY ../ /
-COPY  ./dist /app
+COPY ./dist /app
 COPY ./package.json /app
 COPY ./config /app
 
 RUN npm i
 
-
 USER kong
 RUN kong version
 
-CMD cd /
-COPY my_wrapper_script.sh /
-COPY start_kong.sh /
-COPY start_node.sh /
+COPY ./my_wrapper_script.sh /app
+COPY ./start_kong.sh /app
+COPY ./start_node.sh /app
 CMD pwd & ls
-CMD chmod a+x /my_wrapper_script.sh
-CMD chmod a+x /start_kong.sh
-CMD chmod a+x /start_node.sh
+CMD chmod a+x /app/my_wrapper_script.sh
+CMD chmod a+x /app/start_kong.sh
+CMD chmod a+x /app/start_node.sh
 
 EXPOSE 8000 8443 8001 8444
 
 STOPSIGNAL SIGQUIT
 
-ENTRYPOINT ["/my_wrapper_script.sh"]
+ENTRYPOINT ["sh", "/app/my_wrapper_script.sh"]
 
 
 

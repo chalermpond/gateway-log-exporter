@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Start the first process
 /docker-entrypoint.sh &
@@ -10,7 +10,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-/start_kong.sh &
+sh /app/start_kong.sh &
 status=$?
 
 if [ $status -ne 0 ]; then
@@ -19,7 +19,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the third process
-/start_node.sh &
+sh /app/start_node.sh &
 status=$?
 
 if [ $status -ne 0 ]; then

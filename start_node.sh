@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-npm start
+node /app/dist/main.js
