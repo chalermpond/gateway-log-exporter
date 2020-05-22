@@ -3,15 +3,15 @@ FROM kong:2.0-ubuntu
 USER root
 
 RUN apt-get update -y && \
-    apt-get install -y git nodejs npm && \
-    apt-get clean
+    apt-get install -y sudo nodejs curl npm && \
+    apt-get clean && \
+    npm cache clean -f && npm install -g n && sudo n stable && sudo n latest
 
-#RUN mkdir /app && cd /app
-#    git clone https://ucconnect:8GUHEGP4-ux-p9XxPwNM@gitlab.com/ucconnect.devs/i-bank/api-gateway/gateway-log-exporter.git && \
 WORKDIR /app
-COPY ./dist /app
+
+COPY ./dist /app/dist
 COPY ./package.json /app
-COPY ./config /app
+COPY ./config /app/config
 
 RUN npm i
 
