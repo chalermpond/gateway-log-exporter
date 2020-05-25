@@ -35,7 +35,7 @@ export class RabbitmqAdapter implements IRabbitmqAdapter {
                             }
 
                             channel.assertQueue(data.queue, {
-                                durable: false,
+                                durable: true,
                             })
 
                             channel.sendToQueue(data.queue, Buffer.from(data.messageLog))

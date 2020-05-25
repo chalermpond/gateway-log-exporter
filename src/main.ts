@@ -22,4 +22,5 @@ async function bootstrap() {
 
 bootstrap().then(port => {
     console.log(`application started on port ${port}`)
+    console.log(`AMQP start on ${process.env.AMQP_HOST}:${process.env.AMQP_PORT}`)
 })

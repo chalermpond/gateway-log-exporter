@@ -2,16 +2,14 @@ FROM kong:2.0-ubuntu
 
 USER root
 
-ENV host='localhost'
-ENV port=5672
+ENV AMQP_HOST='bf39e1fbcef4'
+ENV AMQP_PORT=5672
 
 RUN apt-get update -y && \
     apt-get install -y sudo nodejs curl npm && \
     apt-get clean && \
     npm cache clean -f && npm install -g n && sudo n stable && sudo n latest
 
-ENV AMQP_HOST='localhost'
-ENV AMQP_PORT=5972
 
 WORKDIR /app
 
@@ -32,7 +30,7 @@ CMD chmod a+x /app/my_wrapper_script.sh
 CMD chmod a+x /app/start_kong.sh
 CMD chmod a+x /app/start_node.sh
 
-EXPOSE 8000 8443 8001 8444
+EXPOSE 8000 8443 8001 8444 3762
 
 STOPSIGNAL SIGQUIT
 
