@@ -10,6 +10,9 @@ RUN apt-get update -y && \
     apt-get clean && \
     npm cache clean -f && npm install -g n && sudo n stable && sudo n latest
 
+ENV AMQP_HOST='localhost'
+ENV AMQP_PORT=5972
+
 WORKDIR /app
 
 COPY ./dist /app/dist
