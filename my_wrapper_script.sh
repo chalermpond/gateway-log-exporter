@@ -43,11 +43,12 @@ while sleep 60; do
   # If the greps above find anything, they exit with 0 status
   # If they are not both 0, then something is wrong
   if [ $PROCESS_1_STATUS -ne 0 ]; then
-    echo "One of the processes has already exited."
-    exit 1
+    echo "Processes entrypoint has already exited."
   fi
   if [ $PROCESS_2_STATUS -ne 0 ]; then
-    echo "Two of the processes has already exited."
-    exit 1
+    echo "Processes Kong has already exited."
+  fi
+  if [ $PROCESS_3_STATUS -ne 0 ]; then
+    echo "Processes App nest has already exited."
   fi
 done
