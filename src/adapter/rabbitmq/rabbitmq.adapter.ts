@@ -1,23 +1,11 @@
 import { IRabbitmqAdapter } from './interface/adapter.interface'
 import {
-    from,
     Observable,
     of,
-    throwError,
 } from 'rxjs'
 import { IConfig } from '../../common/interface/config.interface'
 import * as amqp from 'amqplib/callback_api'
-import {
-    catchError,
-    concatMap,
-    map,
-    tap,
-} from 'rxjs/operators'
-import * as _ from 'lodash'
-import {
-    HttpException,
-    HttpStatus,
-} from '@nestjs/common'
+import { concatMap } from 'rxjs/operators'
 import { IMessageLog } from './interface/schema.interface'
 
 export class RabbitmqAdapter implements IRabbitmqAdapter {
