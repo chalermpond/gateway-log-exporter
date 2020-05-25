@@ -2,6 +2,9 @@ FROM kong:2.0-ubuntu
 
 USER root
 
+ENV host='localhost'
+ENV port=5672
+
 RUN apt-get update -y && \
     apt-get install -y sudo nodejs curl npm && \
     apt-get clean && \
