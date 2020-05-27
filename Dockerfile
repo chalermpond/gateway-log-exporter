@@ -30,7 +30,7 @@ CMD chmod a+x /app/my_wrapper_script.sh
 CMD chmod a+x /app/start_kong.sh
 CMD chmod a+x /app/start_node.sh
 
-EXPOSE 8000 8443 8001 8444 3762
+EXPOSE 8000 8443 8001 8444
 
 STOPSIGNAL SIGQUIT
 
