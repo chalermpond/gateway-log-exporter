@@ -7,7 +7,7 @@ import {
 import { providerNames } from '../../provider/provider.name'
 import { IGatewayLogService } from '../../domain/gateway-log/interface/service.interface'
 
-@Controller('gateway/log')
+@Controller('/')
 export class GatewayLogController {
     constructor(
         @Inject(providerNames.GATEWAY_LOG_SERVICE)
@@ -15,7 +15,7 @@ export class GatewayLogController {
     ) {
     }
 
-    @Post('/message')
+    @Post('/')
     public sendLog(
         @Body() body: any
     ) {

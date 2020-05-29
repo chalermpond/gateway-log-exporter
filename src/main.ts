@@ -5,10 +5,8 @@ import { ValidationPipe } from '@nestjs/common'
 import * as _ from 'lodash'
 
 async function bootstrap() {
-    // const app = await NestFactory.create(AppModule);
-    // await app.listen(3000);
     const port: number =
-        _.toNumber(process.env.PORT) || Config.get('application.port')
+        _.toNumber(process.env.NODE_PORT) || Config.get('application.port')
     const app = await NestFactory.create(MainModule)
     app.enableCors()
     app.useGlobalPipes(
@@ -22,5 +20,5 @@ async function bootstrap() {
 
 bootstrap().then(port => {
     console.log(`application started on port ${port}`)
-    console.log(`AMQP start on ${process.env.AMQP_HOST}:${process.env.AMQP_PORT}`)
+    console.log(`AMQP send to ${process.env.AMQP_HOST}:${process.env.AMQP_PORT}`)
 })

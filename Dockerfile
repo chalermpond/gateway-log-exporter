@@ -5,6 +5,8 @@ USER root
 
 ENV AMQP_HOST='bf39e1fbcef4'
 ENV AMQP_PORT=5672
+ENV AMQP_QUEUE_NAME='kong-gateway-public'
+ENV NODE_PORT=32768
 ENV NODE_ENV='production'
 
 WORKDIR /app
