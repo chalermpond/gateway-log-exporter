@@ -107,6 +107,7 @@ export class RabbitmqAdapter implements IRabbitmqAdapter, OnApplicationShutdown 
     public sendToRabbitmq(messageLog: IMessageLog): Observable<any> {
         return of(messageLog).pipe(
             map(message => {
+                console.log(`[${RabbitmqAdapter._timestamp()}][AMQP] send messages to rabbitmq`)
                 this._publish(message)
                 return {success: true}
             }),
